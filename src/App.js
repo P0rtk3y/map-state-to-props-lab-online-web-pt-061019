@@ -1,16 +1,26 @@
-import React, { Component } from 'react';
-import UserInput from './components/UserInput'
-import ConnectedUsers from './components/Users'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App'
+import manageUsers from './reducers/manageUsers'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <UserInput />
-        <ConnectedUsers />
-      </div>
-    );
-  }
-}
 
-export default App;
+// add imports and code
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+
+
+const store = createStore(
+  manageUsers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
+ReactDOM.render(
+  // add imports and code
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  // add imports and code
+
+  document.getElementById('root')
+);
+
